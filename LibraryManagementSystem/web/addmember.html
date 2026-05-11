@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Member - Library Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/addmember.css">
+</head>
+<body class="addmember-page">
+    <div class="addmember-container">
+        <div class="addmember-header">
+            <i class="fas fa-user-plus"></i>
+            <h1>Register Member</h1>
+            <p>Fill in the details to register a new library member</p>
+        </div>
+
+        <form action="addmember" method="post" class="addmember-form">
+            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
+
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+
+            <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210"
+                   pattern="[0-9]{10,15}" title="Enter 10–15 digit phone number" required>
+
+            <input type="submit" value=" Register Member">
+            <a href="index.html" class="addmember-cancel">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

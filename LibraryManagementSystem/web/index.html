@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Library Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-book-reader"></i> <span>LibSys</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="addform.html"><i class="fas fa-book"></i> <span>Books</span></a></li>
+            <li><a href="addmember.html"><i class="fas fa-users"></i> <span>Members</span></a></li>
+            <li><a href="issuebook.html"><i class="fas fa-exchange-alt"></i> <span>Issue Book</span></a></li>
+            <li><a href="viewmember"><i class="fas fa-list"></i> <span>View Members</span></a></li>
+            <li><a href="IssuedBook"><i class="fas fa-clock"></i> <span>Issued Books</span></a></li>
+            <li><a href="ReturnBookServlet"><i class="fas fa-undo"></i> <span>Return Book</span></a></li>
+            <li><a href="view"><i class="fas fa-book-open"></i> <span>View Books</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> <span class="logout-text">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+            <div class="welcome">
+                <h1>Welcome Back, Librarian! </h1>
+                <p>Here's what's happening in your library today</p>
+            </div>
+            <div class="user-profile">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </button>
+                <div class="user-avatar">L</div>
+                <span class="user-name">Admin</span>
+            </div>
+        </header>
+
+        <!-- STATS CARDS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3 id="totalBooks">—</h3>
+                    <p>Total Books</p>
+                </div>
+                <div class="stat-icon" style="background:#dbeafe;color:#3b82f6;">
+                    <i class="fas fa-book"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3 id="totalMembers">—</h3>
+                    <p>Total Members</p>
+                </div>
+                <div class="stat-icon" style="background:#d1fae5;color:#10b981;">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3 id="issuedBooks">—</h3>
+                    <p>Books Issued</p>
+                </div>
+                <div class="stat-icon" style="background:#fef3c7;color:#f59e0b;">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3 id="overdueBooks">—</h3>
+                    <p>Overdue</p>
+                </div>
+                <div class="stat-icon" style="background:#fee2e2;color:#ef4444;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="quick-actions">
+            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            <div class="action-buttons">
+                <a href="issuebook.html" class="quick-btn"><i class="fas fa-book-open"></i> Issue Book</a>
+                <a href="ReturnBookServlet" class="quick-btn"><i class="fas fa-undo"></i> Return Book</a>
+                <a href="addform.html" class="quick-btn"><i class="fas fa-plus"></i> Add Book</a>
+                <a href="addmember.html" class="quick-btn"><i class="fas fa-user-plus"></i> Add Member</a>
+                <a href="view" class="quick-btn"><i class="fas fa-list"></i> View Books</a>
+            </div>
+        </div>
+
+        <!-- TWO COLUMN LAYOUT -->
+        <div class="dashboard-grid">
+
+            <!-- RECENT ACTIVITY -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                </div>
+                <div class="activity-list" id="activityList">
+                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div>
+                </div>
+            </div>
+
+            <!-- OVERDUE BOOKS -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-clock"></i>Overdue Books</h3>
+                    <a href="IssuedBook" class="view-all">View All</a>
+                </div>
+                <div class="overdue-list" id="overdueList">
+                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading...</p></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RECENTLY ADDED BOOKS TABLE -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3><i class="fas fa-book"></i> Recently Added Books</h3>
+                <a href="view" class="view-all">View All</a>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentBooksTable">
+                        <tr><td colspan="5" class="text-center">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div><!-- /.main-content -->
+
+    <script src="script.js"></script>
+    <script>
+        // ── FETCH DASHBOARD DATA ──────────────────────────────────────────────
+        fetch('DashboardDataServlet')
+            .then(res => {
+                if (!res.ok) throw new Error('Server error: ' + res.status);
+                return res.json();
+            })
+            .then(data => {
+                // Stats
+                document.getElementById('totalBooks').textContent   = data.totalBooks   ?? 0;
+                document.getElementById('totalMembers').textContent = data.totalMembers ?? 0;
+                document.getElementById('issuedBooks').textContent  = data.issuedBooks  ?? 0;
+                document.getElementById('overdueBooks').textContent = data.overdueBooks ?? 0;
+
+                // Recent Activity (static-ish; can be made dynamic later)
+                document.getElementById('activityList').innerHTML = `
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background:#dbeafe;color:#3b82f6;"><i class="fas fa-book"></i></div>
+                        <div class="activity-info"><p><strong>Book Issued</strong></p><small>Check Issued Books for latest</small></div>
+                        <span class="activity-time"><a href="IssuedBook">View</a></span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background:#d1fae5;color:#10b981;"><i class="fas fa-users"></i></div>
+                        <div class="activity-info"><p><strong>Total Members</strong></p><small>${data.totalMembers ?? 0} registered</small></div>
+                        <span class="activity-time"><a href="viewmember">View</a></span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background:#fef3c7;color:#f59e0b;"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="activity-info"><p><strong>Books Currently Out</strong></p><small>${data.issuedBooks ?? 0} not yet returned</small></div>
+                        <span class="activity-time"><a href="IssuedBook">View</a></span>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon" style="background:#fee2e2;color:#ef4444;"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="activity-info"><p><strong>Overdue Books</strong></p><small>${data.overdueBooks ?? 0} past due date</small></div>
+                        <span class="activity-time"><a href="IssuedBook">View</a></span>
+                    </div>
+                `;
+
+                // Overdue list
+                const overdueList = document.getElementById('overdueList');
+                if (data.overdueBooksList && data.overdueBooksList.length > 0) {
+                    overdueList.innerHTML = data.overdueBooksList.map(b => `
+                        <div class="overdue-item">
+                            <div class="book-info">
+                                <strong>${b.title}</strong>
+                                <small>Member: ${b.memberName}</small>
+                            </div>
+                            <span class="overdue-badge">${b.daysOverdue} days</span>
+                        </div>
+                    `).join('');
+                } else {
+                    overdueList.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-check-circle" style="color:#10b981;opacity:1;"></i>
+                            <p>No overdue books!</p>
+                        </div>`;
+                }
+
+                // Recent books table
+                const tbody = document.getElementById('recentBooksTable');
+                if (data.recentBooks && data.recentBooks.length > 0) {
+                    tbody.innerHTML = data.recentBooks.map(b => `
+                        <tr>
+                            <td>BK${b.id}</td>
+                            <td>${b.title}</td>
+                            <td>${b.author}</td>
+                            <td>${b.category}</td>
+                            <td><span class="${b.quantity < 5 ? 'badge-warning' : 'badge-success'}">${b.quantity}</span></td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center">No books found</td></tr>';
+                }
+            })
+            .catch(err => {
+                console.error('Dashboard fetch error:', err);
+                ['totalBooks','totalMembers','issuedBooks','overdueBooks'].forEach(id => {
+                    document.getElementById(id).textContent = '0';
+                });
+                document.getElementById('activityList').innerHTML =
+                    '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Could not load data</p></div>';
+                document.getElementById('overdueList').innerHTML =
+                    '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Could not load data</p></div>';
+            });
+    </script>
+</body>
+</html>
