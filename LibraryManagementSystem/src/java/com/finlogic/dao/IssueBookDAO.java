@@ -9,7 +9,7 @@ import java.util.List;
 
 public class IssueBookDAO {
 
-    // ── INSERT ────────────────────────────────────────────────────────────────
+    // INSERT
     public static int issue(IssueBook ib) {
         String sql = "INSERT INTO issue_books (book_id, member_id, issue_date, return_date, returned, penalty_amount, penalty_paid) VALUES (?,?,?,?,?,?,?)";
         try (Connection c = DBConnection.getConnection();
@@ -30,7 +30,7 @@ public class IssueBookDAO {
         return 0;
     }
 
-    // ── GET ALL  (BUG FIX: was missing returned/penalty fields) ───────────────
+    // GET ALL  (BUG FIX: was missing returned/penalty fields)
     public static List<IssueBook> getAllIssuedBooks() {
         List<IssueBook> list = new ArrayList<>();
         String sql = "SELECT * FROM issue_books ORDER BY id DESC";
@@ -46,7 +46,7 @@ public class IssueBookDAO {
         return list;
     }
 
-    // ── GET BY MEMBER ID ──────────────────────────────────────────────────────
+    // GET BY MEMBER ID
     public static List<IssueBook> getIssuedBooksByMemberId(int memberId) {
         List<IssueBook> list = new ArrayList<>();
         String sql = "SELECT * FROM issue_books WHERE member_id=? ORDER BY id DESC";
@@ -64,7 +64,7 @@ public class IssueBookDAO {
         return list;
     }
 
-    // ── GET BY ID ─────────────────────────────────────────────────────────────
+    // GET BY ID
     public static IssueBook getIssueBookById(int id) {
         String sql = "SELECT * FROM issue_books WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -80,7 +80,7 @@ public class IssueBookDAO {
         return null;
     }
 
-    // ── GET BY BOOK + MEMBER (for return flow) ────────────────────────────────
+    // GET BY BOOK + MEMBER (for return flow)
     public static IssueBook getIssuedBook(int bookId, int memberId) {
         String sql = "SELECT * FROM issue_books WHERE book_id=? AND member_id=? AND returned=false ORDER BY id DESC LIMIT 1";
         try (Connection c = DBConnection.getConnection();
@@ -97,7 +97,7 @@ public class IssueBookDAO {
         return null;
     }
 
-    // ── GET BY BOOK ONLY (for simplified return flow) ────────────────────────
+    // GET BY BOOK ONLY (for simplified return flow)
     public static IssueBook getIssuedBookByBookId(int bookId) {
         String sql = "SELECT * FROM issue_books WHERE book_id=? AND returned=false ORDER BY id DESC LIMIT 1";
         try (Connection c = DBConnection.getConnection();
@@ -113,7 +113,7 @@ public class IssueBookDAO {
         return null;
     }
 
-    // ── UPDATE (mark returned) ────────────────────────────────────────────────
+    // UPDATE (mark returned)
     public static int updateIssueBook(IssueBook ib) {
         String sql = "UPDATE issue_books SET returned=?, actual_return_date=?, penalty_amount=?, penalty_paid=? WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -132,7 +132,7 @@ public class IssueBookDAO {
         return 0;
     }
 
-    // ── CONVENIENCE returnBook() ──────────────────────────────────────────────
+    // CONVENIENCE returnBook()
     public static void returnBook(int issueId, Date actualReturnDate, double penalty, boolean penaltyPaid) {
         String sql = "UPDATE issue_books SET actual_return_date=?, returned=true, penalty_amount=?, penalty_paid=? WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -149,7 +149,7 @@ public class IssueBookDAO {
         }
     }
 
-    // ── PENALTY CALCULATION ───────────────────────────────────────
+    // PENALTY CALCULATION
     public static double calculatePenalty(IssueBook ib, Date tillDate) {
         if (ib == null || ib.getReturnDate() == null || tillDate == null) return 0.0;
         long lateDays = (tillDate.getTime() - ib.getReturnDate().getTime()) / (1000L * 60 * 60 * 24);
@@ -163,7 +163,7 @@ public class IssueBookDAO {
         return (int) Math.max(0, days);
     }
 
-    // ── OVERDUE LIST FOR DASHBOARD ────────────────────────────────────────────
+    // OVERDUE LIST FOR DASHBOARD
     /**
      * Returns a list of maps with keys: issueId, bookId, memberId, daysOverdue.
      * Use with BookDAO.getBookById() and MemberDAO.getMemberById() to get names.
@@ -183,7 +183,7 @@ public class IssueBookDAO {
         return list;
     }
 
-    // ── PRIVATE MAPPER ────────────────────────────────────────────────────────
+    // PRIVATE MAPPER
     private static IssueBook mapFull(ResultSet rs) throws SQLException {
         IssueBook ib = new IssueBook();
         ib.setId(rs.getInt("id"));

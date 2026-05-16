@@ -25,7 +25,7 @@ public class IssuedBookInfoServlet extends HttpServlet {
 
         String idParam = request.getParameter("id");
         if (idParam == null || idParam.isBlank()) {
-            response.sendRedirect("issued_books.html");
+            response.sendRedirect("issuedbooklist.html");
             return;
         }
 
@@ -51,11 +51,11 @@ public class IssuedBookInfoServlet extends HttpServlet {
                 out.println("<p>Issue record not found.</p>");
             }
 
-            out.println("<a href='issued_books.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
+            out.println("<a href='issuedbooklist.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
             out.println("</div></div></body></html>");
 
         } catch (NumberFormatException e) {
-            response.sendRedirect("issued_books.html");
+            response.sendRedirect("issuedbooklist.html");
         }
     }
 }

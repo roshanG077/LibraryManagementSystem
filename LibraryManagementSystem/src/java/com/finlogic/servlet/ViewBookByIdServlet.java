@@ -21,7 +21,7 @@ public class ViewBookByIdServlet extends HttpServlet {
 
         String idParam = request.getParameter("id");
         if (idParam == null || idParam.isBlank()) {
-            response.sendRedirect("books.html");
+            response.sendRedirect("booklist.html");
             return;
         }
 
@@ -43,11 +43,11 @@ public class ViewBookByIdServlet extends HttpServlet {
                 out.println("<p>Book not found.</p>");
             }
             
-            out.println("<a href='books.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
+            out.println("<a href='booklist.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
             out.println("</div></div></body></html>");
 
         } catch (NumberFormatException e) {
-            response.sendRedirect("books.html");
+            response.sendRedirect("booklist.html");
         }
     }
 }

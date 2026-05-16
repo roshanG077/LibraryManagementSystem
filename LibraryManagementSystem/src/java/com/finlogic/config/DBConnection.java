@@ -6,18 +6,19 @@ import java.sql.SQLException;
 
 /**
  * Provides database connections.
- * NOTE: For production, replace with a connection pool (e.g. HikariCP or DBCP2).
  */
 public class DBConnection {
 
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/library_management";
-private static final String USER = "root";
-private static final String PASSWORD = "RoshanGupta@09";
+    private static final String USER = "root";
+    private static final String PASSWORD = "RoshanGupta@09";
+
     static {
         try {
+            // Loading the driver explicitly for older environments
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            System.err.println("[DBConnection] MySQL JDBC driver not found!");
+            System.err.println("[DBConnection] MySQL JDBC driver not found: " + e.getMessage());
         }
     }
 

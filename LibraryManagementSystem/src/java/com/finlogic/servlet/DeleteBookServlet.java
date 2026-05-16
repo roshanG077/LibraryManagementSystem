@@ -26,7 +26,7 @@ public class DeleteBookServlet extends HttpServlet {
             int status = BookDAO.deleteBook(bookId);
 
             if (status > 0) {
-                response.sendRedirect("books.html?success=deleted");
+                response.sendRedirect("booklist.html?success=deleted");
             } else {
                 response.sendRedirect("removebook.html?error=not_found");
             }

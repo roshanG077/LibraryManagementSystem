@@ -13,7 +13,7 @@ import java.sql.Date;
 
 public class ReturnBookServlet extends HttpServlet {
 
-    // ── GET: Show find-form OR confirmation page ──────────────────────────────
+    // GET: Show find-form OR confirmation page
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class ReturnBookServlet extends HttpServlet {
         }
     }
 
-    // ── POST: Search by bookId + memberId and redirect to confirm page ────────
+    // POST: Search by bookId + memberId and redirect to confirm page
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,7 +74,7 @@ public class ReturnBookServlet extends HttpServlet {
         }
     }
 
-    // ── FIND FORM ─────────────────────────────────────────────────────────────
+    // FIND FORM
     private void showFindForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -133,13 +133,13 @@ public class ReturnBookServlet extends HttpServlet {
         
         out.println("<div class='flex gap-1 mt-2'>");
         out.println("<button type='submit' class='lib-btn lib-btn-primary flex-1'>Find Record</button>");
-        out.println("<a href='" + (isUser ? "user_dashboard.html" : "index.html") + "' class='lib-btn lib-btn-secondary flex-1'>Cancel</a>");
+        out.println("<a href='" + (isUser ? "userdashboard.html" : "dashboard.html") + "' class='lib-btn lib-btn-secondary flex-1'>Cancel</a>");
         out.println("</div></form>");
         out.println("</div></div>");
         out.println("<script src='script.js'></script></body></html>");
     }
 
-    // ── CONFIRM PAGE ──────────────────────────────────────────────────────────
+    // CONFIRM PAGE
     private void showConfirmPage(HttpServletRequest request, HttpServletResponse response, String idParam)
             throws IOException {
 
@@ -148,15 +148,15 @@ public class ReturnBookServlet extends HttpServlet {
 
         int issueId;
         try { issueId = Integer.parseInt(idParam); }
-        catch (NumberFormatException e) { response.sendRedirect("issued_books.html"); return; }
+        catch (NumberFormatException e) { response.sendRedirect("issuedbooklist.html"); return; }
 
         IssueBook ib = IssueBookDAO.getIssueBookById(issueId);
         if (ib == null) {
-            sendErrorJs(response, "Issue record #" + issueId + " not found.", "issued_books.html");
+            sendErrorJs(response, "Issue record #" + issueId + " not found.", "issuedbooklist.html");
             return;
         }
         if (ib.isReturned()) {
-            sendErrorJs(response, "This book has already been returned!", "issued_books.html");
+            sendErrorJs(response, "This book has already been returned!", "issuedbooklist.html");
             return;
         }
 
@@ -255,18 +255,18 @@ public class ReturnBookServlet extends HttpServlet {
 
         out.println("<nav class='top-navbar'>");
         out.println("<div class='nav-container container'>");
-        out.println("<a href='" + (isUser ? "user_dashboard.html" : "index.html") + "' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
+        out.println("<a href='" + (isUser ? "userdashboard.html" : "dashboard.html") + "' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
         out.println("<div class='nav-links'>");
         
         if (isUser) {
-            out.println(navItem("user_dashboard.html", "fa-home", "Home", "dashboard".equals(active)));
-            out.println(navItem("user_issuebook.html", "fa-book-open", "Issue Book", "issue".equals(active)));
+            out.println(navItem("userdashboard.html", "fa-home", "Home", "dashboard".equals(active)));
+            out.println(navItem("userissuebook.html", "fa-book-open", "Issue Book", "issue".equals(active)));
             out.println(navItem("ReturnBookServlet", "fa-undo", "Return Book", "return".equals(active)));
         } else {
-            out.println(navItem("index.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
-            out.println(navItem("addform.html",        "fa-book",         "Books",       "books".equals(active)));
-            out.println(navItem("addmember.html",      "fa-users",        "Members",     "members".equals(active)));
-            out.println(navItem("issued_books.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active) || "return".equals(active)));
+            out.println(navItem("dashboard.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
+            out.println(navItem("bookadd.html",        "fa-book",         "Books",       "books".equals(active)));
+            out.println(navItem("memberadd.html",      "fa-users",        "Members",     "members".equals(active)));
+            out.println(navItem("issuedbooklist.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active) || "return".equals(active)));
         }
         
         out.println("<a href='LogoutServlet' class='lib-btn lib-btn-secondary nav-logout'><i class='fas fa-sign-out-alt'></i> Logout</a>");

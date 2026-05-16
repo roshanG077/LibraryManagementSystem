@@ -32,12 +32,12 @@ public class SettingsServlet extends HttpServlet {
         out.println("<div class='blob-container'><div class='blob blob-1'></div><div class='blob blob-3'></div></div>");
         
         out.println("<nav class='top-navbar'><div class='nav-container container'>");
-        out.println("<a href='index.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
+        out.println("<a href='dashboard.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
         out.println("<div class='nav-links'>");
-        out.println("<a href='index.html' class='nav-link'><i class='fas fa-home'></i> Dashboard</a>");
-        out.println("<a href='addform.html' class='nav-link'><i class='fas fa-book'></i> Books</a>");
-        out.println("<a href='addmember.html' class='nav-link'><i class='fas fa-users'></i> Members</a>");
-        out.println("<a href='issued_books.html' class='nav-link'><i class='fas fa-exchange-alt'></i> Issued Books</a>");
+        out.println("<a href='dashboard.html' class='nav-link'><i class='fas fa-home'></i> Dashboard</a>");
+        out.println("<a href='bookadd.html' class='nav-link'><i class='fas fa-book'></i> Books</a>");
+        out.println("<a href='memberadd.html' class='nav-link'><i class='fas fa-users'></i> Members</a>");
+        out.println("<a href='issuedbooklist.html' class='nav-link'><i class='fas fa-exchange-alt'></i> Issued Books</a>");
         out.println("<a href='settings' class='nav-link active'><i class='fas fa-cog'></i> Settings</a>");
         out.println("<a href='LogoutServlet' class='lib-btn lib-btn-secondary' style='height: 40px; padding: 0 1rem; font-size: 0.9rem; border-radius: 12px; margin-left: 1rem;'><i class='fas fa-sign-out-alt'></i> Logout</a>");
         out.println("</div></div></nav>");
@@ -62,7 +62,7 @@ public class SettingsServlet extends HttpServlet {
         out.println("</div>");
         out.println("<div style='display: flex; gap: 1rem; margin-top: 2rem;'>");
         out.println("<button type='submit' class='lib-btn lib-btn-primary' style='flex: 1;'>Save Settings</button>");
-        out.println("<a href='index.html' class='lib-btn lib-btn-secondary' style='flex: 1;'>Cancel</a>");
+        out.println("<a href='dashboard.html' class='lib-btn lib-btn-secondary' style='flex: 1;'>Cancel</a>");
         out.println("</div></form>");
         out.println("</div></div>");
         out.println("<script src='script.js'></script></body></html>");

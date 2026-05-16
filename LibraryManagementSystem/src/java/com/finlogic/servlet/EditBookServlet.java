@@ -21,16 +21,16 @@ public class EditBookServlet extends HttpServlet {
 
         String idParam = request.getParameter("id");
         if (idParam == null || idParam.isBlank()) {
-            response.sendRedirect("books.html?error=missing_id");
+            response.sendRedirect("booklist.html?error=missing_id");
             return;
         }
 
         int id;
         try { id = Integer.parseInt(idParam.trim()); }
-        catch (NumberFormatException e) { response.sendRedirect("books.html?error=invalid_id"); return; }
+        catch (NumberFormatException e) { response.sendRedirect("booklist.html?error=invalid_id"); return; }
 
         Book b = BookDAO.getBookById(id);
-        if (b == null) { response.sendRedirect("books.html?error=book_not_found"); return; }
+        if (b == null) { response.sendRedirect("booklist.html?error=book_not_found"); return; }
 
         out.println("<!DOCTYPE html><html lang='en'><head>");
         out.println("<meta charset='UTF-8'>");
@@ -82,7 +82,7 @@ public class EditBookServlet extends HttpServlet {
 
         out.println("<div class='flex gap-1 mt-2'>");
         out.println("<button type='submit' class='lib-btn lib-btn-primary flex-1'>Update Book</button>");
-        out.println("<a href='books.html' class='lib-btn lib-btn-secondary flex-1'>Cancel</a>");
+        out.println("<a href='booklist.html' class='lib-btn lib-btn-secondary flex-1'>Cancel</a>");
         out.println("</div>");
         out.println("</form></div></div>");
 
@@ -92,12 +92,12 @@ public class EditBookServlet extends HttpServlet {
     private void printNavbar(PrintWriter out, String active) {
         out.println("<nav class='top-navbar'>");
         out.println("<div class='nav-container container'>");
-        out.println("<a href='index.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
+        out.println("<a href='dashboard.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
         out.println("<div class='nav-links'>");
-        out.println(navItem("index.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
-        out.println(navItem("addform.html",        "fa-book",         "Books",       "books".equals(active)));
-        out.println(navItem("addmember.html",      "fa-users",        "Members",     "members".equals(active)));
-        out.println(navItem("issued_books.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active)));
+        out.println(navItem("dashboard.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
+        out.println(navItem("bookadd.html",        "fa-book",         "Books",       "books".equals(active)));
+        out.println(navItem("memberadd.html",      "fa-users",        "Members",     "members".equals(active)));
+        out.println(navItem("issuedbooklist.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active)));
         out.println("<a href='LogoutServlet' class='lib-btn lib-btn-secondary nav-logout'><i class='fas fa-sign-out-alt'></i> Logout</a>");
         out.println("</div></div></nav>");
     }

@@ -23,7 +23,7 @@ public class AddMemberServlet extends HttpServlet {
         if (name  == null || name.isBlank() ||
             email == null || email.isBlank() ||
             phoneParam == null || phoneParam.isBlank()) {
-            response.sendRedirect("addmember.html?error=missing_fields");
+            response.sendRedirect("memberadd.html?error=missing_fields");
             return;
         }
 
@@ -31,7 +31,7 @@ public class AddMemberServlet extends HttpServlet {
         try {
             phone = Long.parseLong(phoneParam.trim().replaceAll("[^0-9]", ""));
         } catch (NumberFormatException e) {
-            response.sendRedirect("addmember.html?error=invalid_phone");
+            response.sendRedirect("memberadd.html?error=invalid_phone");
             return;
         }
 
@@ -39,9 +39,9 @@ public class AddMemberServlet extends HttpServlet {
         int result = MemberDAO.addMember(member);
 
         if (result > 0) {
-            response.sendRedirect("members.html?success=added");
+            response.sendRedirect("memberlist.html?success=added");
         } else {
-            response.sendRedirect("addmember.html?error=db_error");
+            response.sendRedirect("memberadd.html?error=db_error");
         }
     }
 }

@@ -29,8 +29,8 @@
         <servlet-class>com.finlogic.servlet.IssueBookServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>IssuedBookservlet</servlet-name>
-        <servlet-class>com.finlogic.servlet.IssuedBookservlet</servlet-class>
+        <servlet-name>IssuedBookServlet</servlet-name>
+        <servlet-class>com.finlogic.servlet.IssuedBookServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditMemberServlet</servlet-name>
@@ -105,7 +105,7 @@
         <url-pattern>/IssueBook</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>IssuedBookservlet</servlet-name>
+        <servlet-name>IssuedBookServlet</servlet-name>
         <url-pattern>/IssuedBook</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -177,10 +177,10 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>UserIssueBookFormServlet</servlet-name>
-        <url-pattern>/user_issuebook.html</url-pattern>
+        <url-pattern>/userissuebook.html</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>home.html</welcome-file>
+        <welcome-file>welcome.html</welcome-file>
     </welcome-file-list>
 </web-app>

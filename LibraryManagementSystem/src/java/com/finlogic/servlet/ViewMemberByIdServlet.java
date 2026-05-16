@@ -21,7 +21,7 @@ public class ViewMemberByIdServlet extends HttpServlet {
 
         String idParam = request.getParameter("id");
         if (idParam == null || idParam.isBlank()) {
-            response.sendRedirect("members.html");
+            response.sendRedirect("memberlist.html");
             return;
         }
 
@@ -43,11 +43,11 @@ public class ViewMemberByIdServlet extends HttpServlet {
                 out.println("<p>Member not found.</p>");
             }
             
-            out.println("<a href='members.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
+            out.println("<a href='memberlist.html' class='lib-btn lib-btn-secondary'>Back to List</a>");
             out.println("</div></div></body></html>");
 
         } catch (NumberFormatException e) {
-            response.sendRedirect("members.html");
+            response.sendRedirect("memberlist.html");
         }
     }
 }

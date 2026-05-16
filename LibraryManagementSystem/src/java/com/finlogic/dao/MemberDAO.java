@@ -7,9 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DAO for Member operations.
+ */
 public class MemberDAO {
 
-    // ── AUTHENTICATE ──────────────────────────────────────────────────────────
+    // AUTHENTICATE
     public static Member authenticate(String email, String password) {
         String sql = "SELECT * FROM members WHERE email=? AND password=?";
         try (Connection c = DBConnection.getConnection();
@@ -25,7 +28,7 @@ public class MemberDAO {
         return null;
     }
 
-    // ── INSERT ────────────────────────────────────────────────────────────────
+    // INSERT
     public static int addMember(Member member) {
         String sql = "INSERT INTO members (name, email, phone, password, role) VALUES (?, ?, ?, ?, ?)";
         try (Connection c = DBConnection.getConnection();
@@ -49,7 +52,7 @@ public class MemberDAO {
         return addMember(member);
     }
 
-    // ── UPDATE ────────────────────────────────────────────────────────────────
+    // UPDATE
     public static int updateMember(Member member) {
         String sql = "UPDATE members SET name=?, email=?, phone=?, password=?, role=? WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -69,7 +72,7 @@ public class MemberDAO {
         return 0;
     }
 
-    // ── GET BY ID ─────────────────────────────────────────────────────────────
+    // GET BY ID
     public static Member getMemberById(int id) {
         String sql = "SELECT * FROM members WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -85,7 +88,7 @@ public class MemberDAO {
         return null;
     }
 
-    // ── GET ALL ───────────────────────────────────────────────────────────────
+    // GET ALL
     public static List<Member> getAllMembers() {
         List<Member> list = new ArrayList<>();
         String sql = "SELECT * FROM members ORDER BY id DESC";
@@ -101,7 +104,7 @@ public class MemberDAO {
         return list;
     }
 
-    // ── COUNTS ────────────────────────────────────────────────────────────────
+    // COUNTS
     public static int getTotalMembers() {
         String sql = "SELECT COUNT(*) FROM members";
         try (Connection c = DBConnection.getConnection();
@@ -130,7 +133,7 @@ public class MemberDAO {
         return 0;
     }
 
-    // ── PRIVATE HELPER ────────────────────────────────────────────────────────
+    // PRIVATE HELPER
     private static Member mapMember(ResultSet rs) throws SQLException {
         String password = null;
         String role = "user";

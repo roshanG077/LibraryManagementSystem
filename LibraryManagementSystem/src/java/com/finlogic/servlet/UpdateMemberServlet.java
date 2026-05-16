@@ -21,7 +21,7 @@ public class UpdateMemberServlet extends HttpServlet {
         String phoneParam = request.getParameter("phone");
 
         if (idParam == null || name == null || email == null || phoneParam == null) {
-            response.sendRedirect("members.html?error=missing_fields");
+            response.sendRedirect("memberlist.html?error=missing_fields");
             return;
         }
 
@@ -30,9 +30,9 @@ public class UpdateMemberServlet extends HttpServlet {
             long phone = Long.parseLong(phoneParam.trim().replaceAll("[^0-9]", ""));
             Member member = new Member(id, name.trim(), email.trim(), phone);
             MemberDAO.updateMember(member);
-            response.sendRedirect("members.html?success=updated");
+            response.sendRedirect("memberlist.html?success=updated");
         } catch (NumberFormatException e) {
-            response.sendRedirect("members.html?error=invalid_input");
+            response.sendRedirect("memberlist.html?error=invalid_input");
         }
     }
 }

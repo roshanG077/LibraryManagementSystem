@@ -58,15 +58,15 @@ public class UserIssueBookFormServlet extends HttpServlet {
         out.println("    <!-- Top Navbar -->");
         out.println("    <nav class=\"top-navbar\">");
         out.println("        <div class=\"nav-container container\">");
-        out.println("            <a href=\"user_dashboard.html\" class=\"nav-logo\">");
+        out.println("            <a href=\"userdashboard.html\" class=\"nav-logo\">");
         out.println("                <i class=\"fas fa-layer-group\"></i> LibraryOS");
         out.println("            </a>");
         out.println("            <div class=\"nav-links\">");
-        out.println("                <a href=\"user_dashboard.html\" class=\"nav-link\"><i class=\"fas fa-home\"></i> Home</a>");
-        out.println("                <a href=\"books.html\" class=\"nav-link\"><i class=\"fas fa-book\"></i> View Books</a>");
-        out.println("                <a href=\"user_issuebook.html\" class=\"nav-link active\"><i class=\"fas fa-book-open\"></i> Issue Book</a>");
+        out.println("                <a href=\"userdashboard.html\" class=\"nav-link\"><i class=\"fas fa-home\"></i> Home</a>");
+        out.println("                <a href=\"booklist.html\" class=\"nav-link\"><i class=\"fas fa-book\"></i> View Books</a>");
+        out.println("                <a href=\"userissuebook.html\" class=\"nav-link active\"><i class=\"fas fa-book-open\"></i> Issue Book</a>");
         out.println("                <a href=\"ReturnBookServlet\" class=\"nav-link\"><i class=\"fas fa-undo\"></i> Return Book</a>");
-        out.println("                <a href=\"issued_books.html\" class=\"nav-link\"><i class=\"fas fa-list\"></i> My Issued Books</a>");
+        out.println("                <a href=\"issuedbooklist.html\" class=\"nav-link\"><i class=\"fas fa-list\"></i> My Issued Books</a>");
         out.println("                <a href=\"LogoutServlet\" class=\"lib-btn lib-btn-secondary\" style=\"height: 40px; padding: 0 1rem; font-size: 0.9rem; border-radius: 12px; margin-left: 1rem;\">");
         out.println("                    <i class=\"fas fa-sign-out-alt\"></i> Logout");
         out.println("                </a>");
@@ -122,7 +122,7 @@ public class UserIssueBookFormServlet extends HttpServlet {
 
         out.println("                <div style=\"display: flex; gap: 1rem; margin-top: 2rem;\">");
         out.println("                    <button type=\"submit\" class=\"lib-btn lib-btn-primary\" style=\"flex: 1;\">Issue Book</button>");
-        out.println("                    <a href=\"user_dashboard.html\" class=\"lib-btn lib-btn-secondary\" style=\"flex: 1;\">Cancel</a>");
+        out.println("                    <a href=\"userdashboard.html\" class=\"lib-btn lib-btn-secondary\" style=\"flex: 1;\">Cancel</a>");
         out.println("                </div>");
         out.println("            </form>");
         out.println("        </div>");

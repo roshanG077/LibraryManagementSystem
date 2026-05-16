@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BookDAO {
 
-    // ── INSERT ────────────────────────────────────────────────────────────────
+    // INSERT
     public static int insertBook(Book book) {
         String sql = "INSERT INTO books (title, author, category, quantity) VALUES (?, ?, ?, ?)";
         try (Connection c = DBConnection.getConnection();
@@ -27,7 +27,7 @@ public class BookDAO {
         return 0;
     }
 
-    // ── UPDATE ────────────────────────────────────────────────────────────────
+    // UPDATE
     public static int updateBook(Book book) {
         String sql = "UPDATE books SET title=?, author=?, category=?, quantity=? WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -46,7 +46,7 @@ public class BookDAO {
         return 0;
     }
 
-    // ── DELETE ────────────────────────────────────────────────────────────────
+    // DELETE
     public static int deleteBook(int id) {
         String sql = "DELETE FROM books WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -61,7 +61,7 @@ public class BookDAO {
         return 0;
     }
 
-    // ── GET BY ID ─────────────────────────────────────────────────────────────
+    // GET BY ID
     public static Book getBookById(int id) {
         String sql = "SELECT * FROM books WHERE id=?";
         try (Connection c = DBConnection.getConnection();
@@ -77,7 +77,7 @@ public class BookDAO {
         return null;
     }
 
-    // ── GET ALL ───────────────────────────────────────────────────────────────
+    // GET ALL
     public static List<Book> getAllBooks() {
         List<Book> list = new ArrayList<>();
         String sql = "SELECT * FROM books ORDER BY id DESC";
@@ -93,7 +93,7 @@ public class BookDAO {
         return list;
     }
 
-    // ── GET RECENT ────────────────────────────────────────────────────────────
+    // GET RECENT
     public static List<Book> getRecentBooks(int limit) {
         List<Book> list = new ArrayList<>();
         String sql = "SELECT * FROM books ORDER BY id DESC LIMIT ?";
@@ -110,7 +110,7 @@ public class BookDAO {
         return list;
     }
 
-    // ── COUNTS ────────────────────────────────────────────────────────────────
+    // COUNTS
     public static int getTotalBooks() {
         return countQuery("SELECT COUNT(*) FROM books");
     }
@@ -127,7 +127,7 @@ public class BookDAO {
         return countQuery("SELECT COALESCE(SUM(quantity), 0) FROM books");
     }
 
-    // ── PRIVATE HELPERS ───────────────────────────────────────────────────────
+    // PRIVATE HELPERS
     private static int countQuery(String sql) {
         try (Connection c = DBConnection.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);

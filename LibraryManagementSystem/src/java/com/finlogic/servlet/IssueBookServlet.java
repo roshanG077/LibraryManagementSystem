@@ -29,7 +29,7 @@ public class IssueBookServlet extends HttpServlet {
         // Validate presence
         if (bidParam == null || midParam == null || issueParam == null || returnParam == null ||
             bidParam.isBlank() || midParam.isBlank() || issueParam.isBlank() || returnParam.isBlank()) {
-            sendError(response, "All fields are required.", "user_issuebook.html");
+            sendError(response, "All fields are required.", "userissuebook.html");
             return;
         }
 
@@ -52,23 +52,23 @@ public class IssueBookServlet extends HttpServlet {
             issueDate  = Date.valueOf(issueParam.trim());
             returnDate = Date.valueOf(returnParam.trim());
         } catch (Exception e) {
-            sendError(response, "Invalid input values.", "user_issuebook.html");
+            sendError(response, "Invalid input values.", "userissuebook.html");
             return;
         }
 
         if (!returnDate.after(issueDate)) {
-            sendError(response, "Return date must be after the issue date.", "user_issuebook.html");
+            sendError(response, "Return date must be after the issue date.", "userissuebook.html");
             return;
         }
 
         // Check book exists and has stock
         Book book = BookDAO.getBookById(bookId);
         if (book == null) {
-            sendError(response, "Book ID " + bookId + " not found.", "user_issuebook.html");
+            sendError(response, "Book ID " + bookId + " not found.", "userissuebook.html");
             return;
         }
         if (book.getQuantity() < 1) {
-            sendError(response, "Book &quot;" + book.getTitle() + "&quot; is out of stock.", "user_issuebook.html");
+            sendError(response, "Book &quot;" + book.getTitle() + "&quot; is out of stock.", "userissuebook.html");
             return;
         }
 
@@ -89,9 +89,9 @@ public class IssueBookServlet extends HttpServlet {
             // Decrement book stock
             book.setQuantity(book.getQuantity() - 1);
             BookDAO.updateBook(book);
-            response.sendRedirect("issued_books.html?msg=issued");
+            response.sendRedirect("issuedbooklist.html?msg=issued");
         } else {
-            response.sendRedirect("user_issuebook.html?error=failed");
+            response.sendRedirect("userissuebook.html?error=failed");
         }
     }
 

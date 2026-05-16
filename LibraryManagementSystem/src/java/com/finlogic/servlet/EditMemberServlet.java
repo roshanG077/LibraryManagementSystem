@@ -20,14 +20,14 @@ public class EditMemberServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String idParam = request.getParameter("id");
-        if (idParam == null || idParam.isBlank()) { response.sendRedirect("members.html"); return; }
+        if (idParam == null || idParam.isBlank()) { response.sendRedirect("memberlist.html"); return; }
 
         int id;
         try { id = Integer.parseInt(idParam.trim()); }
-        catch (NumberFormatException e) { response.sendRedirect("members.html?error=invalid_id"); return; }
+        catch (NumberFormatException e) { response.sendRedirect("memberlist.html?error=invalid_id"); return; }
 
         Member m = MemberDAO.getMemberById(id);
-        if (m == null) { response.sendRedirect("members.html?error=member_not_found"); return; }
+        if (m == null) { response.sendRedirect("memberlist.html?error=member_not_found"); return; }
 
         out.println("<!DOCTYPE html><html lang='en'><head>");
         out.println("<meta charset='UTF-8'>");
@@ -74,7 +74,7 @@ public class EditMemberServlet extends HttpServlet {
 
         out.println("<div style='display: flex; gap: 1rem; margin-top: 2rem;'>");
         out.println("<button type='submit' class='lib-btn lib-btn-primary' style='flex: 1;'>Update Member</button>");
-        out.println("<a href='members.html' class='lib-btn lib-btn-secondary' style='flex: 1;'>Cancel</a>");
+        out.println("<a href='memberlist.html' class='lib-btn lib-btn-secondary' style='flex: 1;'>Cancel</a>");
         out.println("</div>");
         out.println("</form></div></div>");
 
@@ -84,12 +84,12 @@ public class EditMemberServlet extends HttpServlet {
     private void printNavbar(PrintWriter out, String active) {
         out.println("<nav class='top-navbar'>");
         out.println("<div class='nav-container container'>");
-        out.println("<a href='index.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
+        out.println("<a href='dashboard.html' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
         out.println("<div class='nav-links'>");
-        out.println(navItem("index.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
-        out.println(navItem("addform.html",        "fa-book",         "Books",       "books".equals(active)));
-        out.println(navItem("addmember.html",      "fa-users",        "Members",     "members".equals(active)));
-        out.println(navItem("issued_books.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active)));
+        out.println(navItem("dashboard.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
+        out.println(navItem("bookadd.html",        "fa-book",         "Books",       "books".equals(active)));
+        out.println(navItem("memberadd.html",      "fa-users",        "Members",     "members".equals(active)));
+        out.println(navItem("issuedbooklist.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active)));
         out.println("<a href='login.html' class='lib-btn lib-btn-secondary' style='height: 40px; padding: 0 1rem; font-size: 0.9rem; border-radius: 12px; margin-left: 1rem;'><i class='fas fa-sign-out-alt'></i> Logout</a>");
         out.println("</div></div></nav>");
     }

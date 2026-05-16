@@ -58,11 +58,11 @@ public class ConfirmReturnServlet extends HttpServlet {
 
         IssueBook ib = IssueBookDAO.getIssueBookById(issueId);
         if (ib == null) {
-            response.sendRedirect("issued_books.html?error=failed");
+            response.sendRedirect("issuedbooklist.html?error=failed");
             return;
         }
         if (ib.isReturned()) {
-            response.sendRedirect("issued_books.html?error=failed");
+            response.sendRedirect("issuedbooklist.html?error=failed");
             return;
         }
 
@@ -107,7 +107,7 @@ public class ConfirmReturnServlet extends HttpServlet {
             out.println("</table></div>");
 
             out.println("<div class='flex gap-1 justify-center'>");
-            out.println("<a href='issued_books.html' class='lib-btn lib-btn-secondary flex-1'>All Issues</a>");
+            out.println("<a href='issuedbooklist.html' class='lib-btn lib-btn-secondary flex-1'>All Issues</a>");
             out.println("<a href='ReturnBookServlet' class='lib-btn lib-btn-primary flex-1'>Return Another</a>");
             out.println("</div></div></div>");
             out.println("<script src='script.js'></script></body></html>");
@@ -122,18 +122,18 @@ public class ConfirmReturnServlet extends HttpServlet {
 
         out.println("<nav class='top-navbar'>");
         out.println("<div class='nav-container container'>");
-        out.println("<a href='" + (isUser ? "user_dashboard.html" : "index.html") + "' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
+        out.println("<a href='" + (isUser ? "userdashboard.html" : "dashboard.html") + "' class='nav-logo'><i class='fas fa-layer-group'></i> LibraryOS</a>");
         out.println("<div class='nav-links'>");
         
         if (isUser) {
-            out.println(navItem("user_dashboard.html", "fa-home", "Home", "dashboard".equals(active)));
-            out.println(navItem("user_issuebook.html", "fa-book-open", "Issue Book", "issue".equals(active)));
+            out.println(navItem("userdashboard.html", "fa-home", "Home", "dashboard".equals(active)));
+            out.println(navItem("userissuebook.html", "fa-book-open", "Issue Book", "issue".equals(active)));
             out.println(navItem("ReturnBookServlet", "fa-undo", "Return Book", "return".equals(active)));
         } else {
-            out.println(navItem("index.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
-            out.println(navItem("addform.html",        "fa-book",         "Books",       "books".equals(active)));
-            out.println(navItem("addmember.html",      "fa-users",        "Members",     "members".equals(active)));
-            out.println(navItem("issued_books.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active) || "return".equals(active)));
+            out.println(navItem("dashboard.html",         "fa-home",         "Dashboard",   "dashboard".equals(active)));
+            out.println(navItem("bookadd.html",        "fa-book",         "Books",       "books".equals(active)));
+            out.println(navItem("memberadd.html",      "fa-users",        "Members",     "members".equals(active)));
+            out.println(navItem("issuedbooklist.html",          "fa-exchange-alt", "Issued Books", "issue".equals(active) || "return".equals(active)));
         }
         
         out.println("<a href='LogoutServlet' class='lib-btn lib-btn-secondary h-40 px-4 fs-md' style='border-radius: 12px; margin-left: 1rem;'><i class='fas fa-sign-out-alt'></i> Logout</a>");

@@ -25,7 +25,7 @@ public class AddBookServlet extends HttpServlet {
             auth  == null || auth.isBlank()  ||
             cate  == null || cate.isBlank()  ||
             quntParam == null || quntParam.isBlank()) {
-            response.sendRedirect("addform.html?error=missing_fields");
+            response.sendRedirect("bookadd.html?error=missing_fields");
             return;
         }
 
@@ -34,7 +34,7 @@ public class AddBookServlet extends HttpServlet {
             quantity = Integer.parseInt(quntParam.trim());
             if (quantity < 1) throw new NumberFormatException();
         } catch (NumberFormatException e) {
-            response.sendRedirect("addform.html?error=invalid_quantity");
+            response.sendRedirect("bookadd.html?error=invalid_quantity");
             return;
         }
 
@@ -42,9 +42,9 @@ public class AddBookServlet extends HttpServlet {
         int result = BookDAO.insertBook(book);
 
         if (result > 0) {
-            response.sendRedirect("books.html?success=added");
+            response.sendRedirect("booklist.html?success=added");
         } else {
-            response.sendRedirect("addform.html?error=db_error");
+            response.sendRedirect("bookadd.html?error=db_error");
         }
     }
 }

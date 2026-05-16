@@ -33,9 +33,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("role", m.getRole());
 
             if ("admin".equalsIgnoreCase(m.getRole())) {
-                response.sendRedirect("index.html"); // Admin dashboard
+                response.sendRedirect("dashboard.html"); // Admin dashboard
             } else {
-                response.sendRedirect("user_dashboard.html"); // User dashboard
+                response.sendRedirect("userdashboard.html"); // User dashboard
             }
         } else {
             response.sendRedirect("login.html?error=invalid_credentials");
