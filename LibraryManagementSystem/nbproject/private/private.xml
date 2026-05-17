@@ -5,14 +5,20 @@
         <group>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/css/style.css</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/register.html</file>
-            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/dashboard.html</file>
-            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/welcome.html</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/UpdateMemberServlet.java</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/config/DBConnection.java</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/issuebook.html</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/model/IssueBook.java</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/IssueBookServlet.java</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/ViewBookServlet.java</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/EditBookServlet.java</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/login.html</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/script.js</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/ViewMemberServlet.java</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/web/welcome.html</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/IssuedBookServlet.java</file>
             <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/servlet/IssuedBookInfoServlet.java</file>
+            <file>file:/C:/Users/offic/Desktop/LibraryManagementSystem/LibraryManagementSystem/src/java/com/finlogic/dao/SettingsDAO.java</file>
         </group>
     </open-files>
 </project-private>

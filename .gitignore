@@ -1,0 +1,42 @@
+# Gitignore for LibraryOS (Java Web App)
+#NetBeans / Ant Build Artifacts
+/LibraryManagementSystem/build/
+/LibraryManagementSystem/dist/
+/LibraryManagementSystem/nbproject/private/
+/LibraryManagementSystem/nbbuild/
+/LibraryManagementSystem/nbdist/
+/LibraryManagementSystem/.nb-gradle/
+
+# Temporary / Log Files
+*.log
+*.tmp
+*.bak
+*.swp
+/work/
+/temp/
+
+#OS Metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+#IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+#Eclipse
+.metadata/
+.classpath
+.project
+.settings/
+*.tmp
+*.bak
+*.eml
+*.userlibraries
