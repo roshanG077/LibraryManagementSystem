@@ -34,6 +34,34 @@ The application is built using Java Servlets, JDBC, MySQL, and AJAX with a respo
 
 ---
 
+## Screenshots
+
+### Admin Dashboard
+![Admin Dashboard](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/admin-dashboard.png)
+
+### Book Management
+![Book Management](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/book-management.png)
+
+### Member Management
+![Member Management](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/member-management.png)
+
+### Issue Book
+![Issue Book](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/issue-book.png)
+
+### Return Book
+![Return Book](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/return-book.png)
+
+### Overdue & Fines
+![Overdue and Fines](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/overdue-fines.png)
+
+### Member Dashboard
+![Member Dashboard](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/member-dashboard.png)
+
+### System Settings
+![System Settings](https://raw.githubusercontent.com/roshanG077/libraryManagementSystem/main/LibraryManagementSystem/web/images/screenshorts/system-settings.png)
+
+---
+
 ## Tech Stack
 
 | Layer      | Technology |
